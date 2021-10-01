@@ -17,7 +17,7 @@ def temporal():
     password = "1234"
     )
     cur = con.cursor()
-    cur.execute("COPY temporal FROM '/home/marcos/Descargas/BlockbusterData.csv' (FORMAT 'csv', DELIMITER ';', NULL '-', HEADER 'true');commit;")
+    cur.execute("COPY temporal FROM '/home/marcos/Practica1/BlockbusterData.csv' (FORMAT 'csv', DELIMITER ';', NULL '-', HEADER 'true');commit;")
     cur.close()
     con.close()
     return "Datos cargados a la tabla temporal"
