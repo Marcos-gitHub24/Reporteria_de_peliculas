@@ -1,13 +1,17 @@
+--BORRADO DE LA TABLA TEMPORAL
+DROP TABLE Temporal;
+
+--CREADO DE LA TABLA TEMPORAL
 CREATE TABLE Temporal(
-	nombre_cliente VARCHAR(40),
-	correo_cliente VARCHAR(30),
+	nombre_cliente VARCHAR(70),
+	correo_cliente VARCHAR(50),
 	cliente_activo VARCHAR(2),
 	fecha_creacion TIMESTAMP,
 	tienda_preferida VARCHAR(40),
 	direccion_cliente VARCHAR(70),
 	codigo_postal_cliente VARCHAR(5),
 	ciudad_cliente VARCHAR(30),
-	pais_cliente VARCHAR(30),
+	pais_cliente VARCHAR(50),
 	fecha_renta TIMESTAMP,
 	fecha_retorno TIMESTAMP,
 	monto_a_pagar DOUBLE PRECISION,
@@ -21,13 +25,13 @@ CREATE TABLE Temporal(
 	direccion_empleado VARCHAR(40),
     codigo_postal_empleado VARCHAR(5),
 	ciudad_empleado VARCHAR(30),
-	pais_empleado VARCHAR(30),
+	pais_empleado VARCHAR(50),
     nombre_tienda VARCHAR(30),
     encargado_tienda VARCHAR(30),
     direccion_tienda VARCHAR(40),
     codigo_postal_tienda VARCHAR(5),
     ciudad_tienda VARCHAR(30),
-    pais_tienda VARCHAR(30),
+    pais_tienda VARCHAR(50),
     tienda_pelicula VARCHAR(30),
     nombre_pelicula VARCHAR(30),
     descripcion_pelicula VARCHAR(200),

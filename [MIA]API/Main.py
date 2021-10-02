@@ -17,7 +17,7 @@ def temporal():
     password = "1234"
     )
     cur = con.cursor()
-    cur.execute("COPY temporal FROM '/home/marcos/Practica1/BlockbusterData.csv' (FORMAT 'csv', DELIMITER ';', NULL '-', HEADER 'true');commit;")
+    cur.execute("COPY temporal FROM '/home/marcos/Practica1/[MIA]API/BlockbusterData.csv' (FORMAT 'csv', DELIMITER ';', NULL '-', HEADER 'true');commit;")
     cur.close()
     con.close()
     return "Datos cargados a la tabla temporal"
@@ -237,31 +237,31 @@ def modelo():
         ORDER BY nombre_tienda ASC;
 
         INSERT INTO CIUDAD (ciudad, codigo_postal, id_pais)
-        SELECT NOMBREC, CODIGO_POSTAL, ID_PAIS
+        SELECT NOMBRE_CIUDAD, CODIGO_POSTAL, ID_PAIS
         FROM
         (
-        SELECT DISTINCT  CIUDAD_EMPLEADO AS NOMBREC, CODIGO_POSTAL_EMPLEADO AS CODIGO_POSTAL, ID_PAIS
+        SELECT DISTINCT  CIUDAD_EMPLEADO AS NOMBRE_CIUDAD, CODIGO_POSTAL_EMPLEADO AS CODIGO_POSTAL, ID_PAIS
         FROM TEMPORAL
         INNER JOIN 
         PAIS
         ON 
         PAIS_EMPLEADO = pais
         UNION
-        SELECT DISTINCT  CIUDAD_TIENDA AS NOMBREC, CODIGO_POSTAL_TIENDA AS CODIGO_POSTAL, ID_PAIS
+        SELECT DISTINCT  CIUDAD_TIENDA AS NOMBRE_CIUDAD, CODIGO_POSTAL_TIENDA AS CODIGO_POSTAL, ID_PAIS
         FROM TEMPORAL
         INNER JOIN 
         PAIS
         ON 
         PAIS_TIENDA = pais
         UNION
-        SELECT DISTINCT  CIUDAD_CLIENTE AS NOMBREC, CODIGO_POSTAL_CLIENTE AS CODIGO_POSTAL, ID_PAIS
+        SELECT DISTINCT  CIUDAD_CLIENTE AS NOMBRE_CIUDAD, CODIGO_POSTAL_CLIENTE AS CODIGO_POSTAL, ID_PAIS
         FROM TEMPORAL
         INNER JOIN 
         PAIS
         ON 
         PAIS_CLIENTE = pais
         ) AS M
-        WHERE NOMBREC IS NOT NULL;
+        WHERE NOMBRE_CIUDAD IS NOT NULL;
 
         INSERT INTO Empleado (nombre, apellido, direccion, correo, empleado_activo, nombre_usuario, contrasena, id_tienda)
         SELECT DISTINCT

@@ -102,14 +102,14 @@ ORDER BY total_rentas.pais;
 --CONSULTA 8--
 
 WITH rentas AS (SELECT Pais.pais, Pais.id_pais, count(*)
-FROM Pais, Renta, Ciudad, Cliente
+FROM Cliente, Ciudad, Pais, Renta  
 WHERE Cliente.id_cliente = Renta.id_cliente 
 AND Cliente.id_ciudad = Ciudad.id_ciudad 
 AND Pais.id_pais = Ciudad.id_pais
 GROUP BY Pais.id_pais),
 
 categoria_sport AS (SELECT rentas.pais, count(*)
-FROM rentas, Renta, Ciudad, Cliente, Pelicula, 
+FROM  Cliente, Ciudad, Renta ,Pelicula, rentas, 
 Categoria, Pelicula_categoria
 WHERE Cliente.id_cliente = Renta.id_cliente 
 AND Categoria.categoria = 'Sports'
@@ -120,8 +120,7 @@ AND rentas.id_pais = Ciudad.id_pais
 AND Cliente.id_ciudad = Ciudad.id_ciudad 
 GROUP BY rentas.pais)
 
-SELECT rentas.pais, 
-TRUNC(((SUM(categoria_sport.count)/rentas.count)*100),2) 
+SELECT rentas.pais, TRUNC(((SUM(categoria_sport.count)/rentas.count)*100),2) 
 AS Porcentaje
 FROM rentas, categoria_sport, Pais
 WHERE rentas.pais = Pais.pais 
