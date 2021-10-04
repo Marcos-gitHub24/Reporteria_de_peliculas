@@ -509,7 +509,7 @@ def consulta4():
     )
     cur = con.cursor()
     consulta = '''
-        SELECT DISTINCT Actor.nombre, Actor.apellido, 
+        SELECT Actor.nombre, Actor.apellido, 
         Pelicula.ano_lanzamiento
         FROM Actor, Pelicula, Pelicula_actor 
         WHERE Pelicula.descripcion LIKE '%Crocodile%'

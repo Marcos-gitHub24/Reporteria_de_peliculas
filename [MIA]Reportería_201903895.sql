@@ -22,7 +22,7 @@ ORDER BY Actor.nombre ASC ;
 
 --CONSULTA 4 --
 
-SELECT DISTINCT Actor.nombre, Actor.apellido, 
+SELECT Actor.nombre, Actor.apellido, 
 Pelicula.ano_lanzamiento
 FROM Actor, Pelicula, Pelicula_actor 
 WHERE Pelicula.descripcion LIKE '%Crocodile%'
